@@ -17,13 +17,19 @@ public class Question07_5 {
 
 		// TODO: 実装ここから
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+		int sum = 0;
 
 		System.out.println("商品名：単価〇円（税込〇円）× 〇個 = 〇円");
 		System.out.println();
 
 		System.out.println("購入内容一覧：");
 		for (int i = 0; i < amounts.length; i++) {
-			System.out.print(itemNames[i] + "：単価" + prices[i] + " 円 （税込" + (int) (prices[i] * 1.1) + " 円）");
+			System.out.print(itemNames[i] + "：単価" + prices[i] + " 円 （税込" + (int) (prices[i] * 1.1) + " 円） ×");
+			amounts[i] = Integer.parseInt(reader.readLine());
+			System.out.println("個=" + (int) (prices[i] * 1.1 * amounts[i]) + " 円");
+			sum += (int) (prices[i] * 1.1 * amounts[i]);
 		}
+		System.out.println("合計（税込）：" + sum + " 円");
+		System.out.println("割引後合計（税込）：" + (int) (sum * .9) + " 円");
 	}
 }
